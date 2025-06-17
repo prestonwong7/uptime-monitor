@@ -9,14 +9,6 @@ pipeline {
                 }
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Install dependencies from requirements.txt
-                    bat 'venv\Scripts\pip.exe install -r requirements.txt'
-                }
-            }
-        }
         stage('Run Uptime Monitor') {
             steps {
                 script {
