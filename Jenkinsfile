@@ -1,22 +1,30 @@
 pipeline {
     agent any
     stages {
-        stage('Virtual Environment') {
+        stage('Setup Venv') {
             steps {
-                script {
-                    // Create a virtual environment
-                    bat 'python3 -m venv venv'
-                }
+                bat 'python -m venv venv'
             }
         }
-        stage('Run Uptime Monitor') {
+        stage('Check Workspace Files') {
             steps {
-                script {
-                    // Run the uptime monitor script
-                    bat 'venv\\Scripts\\python.exe monitor.py'
-                }
+                bat 'dir'
             }
         }
-
+        stage('Install Dependencies') {
+            steps {
+                bat 'venv\\Scripts\\pip.exe install -r requirements.txt'
+            }
+        }
+        stage('Check Venv Scripts') {
+            steps {
+                bat 'dir venv\\Scripts'
+            }
+        }
+        stage('Run Monitor') {
+            steps {
+                bat 'venv\\Scripts\\python.exe monitor.py'
+            }
+        }
     }
 }
