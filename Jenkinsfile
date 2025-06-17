@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Run the uptime monitor script
-                    bat 'venv\\Scripts\\python.exe uptime_monitor.py'
+                    bat 'venv\\Scripts\\python.exe monitor.py'
                 }
             }
         }
