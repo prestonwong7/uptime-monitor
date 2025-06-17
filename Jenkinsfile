@@ -1,27 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Check Python') {
-            steps {
-                bat 'where python'
-                bat 'python --version'
-            }
-        }
         stage('Setup Venv') {
             steps {
-                bat 'python -m venv venv'
-                bat 'venv\\Scripts\\python.exe -m ensurepip --upgrade'
-                bat 'venv\\Scripts\\pip.exe install --upgrade pip'
+                 sh 'python -m venv venv'
+                // Upgrade pip inside venv
+                sh './venv/bin/pip install --upgrade pip'
             }
         }
         stage('Install Dependencies') {
             steps {
-                bat 'venv\\Scripts\\pip.exe install -r requirements.txt'
+                sh './venv/bin/pip install -r requirements.txt'
             }
         }
         stage('Run Monitor') {
             steps {
-                bat 'venv\\Scripts\\python.exe monitor.py'
+                sh './venv/bin/python monitor.py'
             }
         }
     }
