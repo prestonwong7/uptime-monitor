@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies from requirements.txt
-                    bat 'venv/bin/pip install -r requirements.txt'
+                    bat 'venv\Scripts\pip.exe install -r requirements.txt'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Run the uptime monitor script
-                    bat 'venv/bin/python monitor.py'
+                    bat 'venv\\Scripts\\python.exe uptime_monitor.py'
                 }
             }
         }
