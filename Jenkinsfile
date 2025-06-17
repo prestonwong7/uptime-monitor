@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                bat 'venv\\Scripts\\pip.exe install -r requirements.txt'
+                bat '.\venv\\Scripts\\pip.exe install -r requirements.txt'
             }
         }
         stage('Run Monitor') {
             steps {
-                bat 'venv\\Scripts\\python.exe monitor.py'
+                bat '.\venv\\Scripts\\python.exe monitor.py'
             }
         }
     }
