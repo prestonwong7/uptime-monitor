@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // Run the uptime monitor script
-                    sh 'venv/bin/python uptime_monitor.py'
+                    sh 'venv/bin/python monitor.py'
                 }
             }
         }
