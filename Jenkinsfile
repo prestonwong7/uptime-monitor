@@ -4,6 +4,7 @@ pipeline {
         stage('Setup Venv') {
             steps {
                 bat 'python -m venv venv'
+                bat 'venv\\Scripts\\python.exe -m ensurepip --upgrade'
                 bat 'venv\\Scripts\\pip.exe install --upgrade pip'
             }
         }
