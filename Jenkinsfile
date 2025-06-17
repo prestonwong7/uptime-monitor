@@ -5,9 +5,7 @@ pipeline {
             steps {
                 script {
                     // Create a virtual environment
-                    sh 'python3 -m venv venv'
-                    // Activate the virtual environment
-                    sh '. venv/bin/activate'
+                    bat 'python3 -m venv venv'
                 }
             }
         }
@@ -15,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies from requirements.txt
-                    sh 'venv/bin/pip install -r requirements.txt'
+                    bat 'venv/bin/pip install -r requirements.txt'
                 }
             }
         }
@@ -23,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Run the uptime monitor script
-                    sh 'venv/bin/python monitor.py'
+                    bat 'venv/bin/python monitor.py'
                 }
             }
         }
