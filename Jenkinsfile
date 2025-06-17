@@ -3,18 +3,27 @@ pipeline {
     stages {
         stage('Setup Venv') {
             steps {
-                bat 'python -m venv venv'
-                bat 'venv\\Scripts\\pip.exe install --upgrade pip'
+                bat '''
+                python -m venv venv
+                call venv\\Scripts\\activate.bat
+                pip install --upgrade pip
+                '''
             }
         }
         stage('Install Dependencies') {
             steps {
-                bat '.\venv\\Scripts\\pip.exe install -r requirements.txt'
+                bat '''
+                call venv\\Scripts\\activate.bat
+                pip install -r requirements.txt
+                '''
             }
         }
         stage('Run Monitor') {
             steps {
-                bat '.\venv\\Scripts\\python.exe monitor.py'
+                bat '''
+                call venv\\Scripts\\activate.bat
+                python monitor.py
+                '''
             }
         }
     }
